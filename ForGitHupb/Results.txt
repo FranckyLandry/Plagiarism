@@ -1,0 +1,25 @@
+1)The first test is to test if MOSS and SIM by uploading the same files, it is able to detecte plagiary at the same level(percentage)
+Results
+The SIM tool did recognize the plagiarism and it provided 100% of plagiarism
+The MOSS tool did recognize the plagiarism but it provided only 96% of plagiarism.
+2) The second test is to change a bit the logic of the method to see if both of them can detecte the plagiarism
+Results
+The sim didn't not recognize the plagia it assumed that they was no similarities. The percentage is 70%
+The Moss as well didn't not recognize the plagia, it assumed that they was no si,ilarities. The percentage is 76%
+3) The third test is to check if does recognize the plagiary in case of changing the vairables name
+Results
+The SIM tool did recognize the plagiarism and it provided 100% of plagiarism.
+The MOSS tool did recognize the plagiarism but it provided only 96% of plagiarism
+
+4) The fourth test is to enable the recursive check (Meaning to let for example A to be check against B and B to be checked against A) this is only for SIM
+results
+the results are 'intersting' because the results obtained are different which shouldn't be the case. the first A vs B gave me 72% and B vs A provided 67%
+5) the fifth is to augment the size of the method by adding more statements and changing the variables names 
+ Results 
+SIM:
+SIM provided 79% even if the tool didn't not provide a 100% of plagiary but it did recognize the part changed in the code as smilar to each other. 
+MOSS provideed 64% of plagiary but it did recognize the that the logic was changed and it recognized as well the staments.
+6) Clone Detection
+The test was made to the same files but in the same solution. 
+Results
+The results shown that they was no macthing between the 2 classes. 
