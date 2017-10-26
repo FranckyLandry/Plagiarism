@@ -1,0 +1,89 @@
+﻿@model PMaster.Models.Assignment
+
+@{
+    ViewBag.Title = "AddStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddStudent</h2>
+@*@Model.Assignment = ViewBag.Ass;*@
+@*@foreach (var item in (List< PMaster.Models.Assignment>)ViewBag.Ass)
+{
+
+}*@
+
+@{
+//var assignemnt = (((((PMaster.Models.Student)Model.Student).FirstName)));
+}
+
+@using (Html.BeginForm("create", "Assignments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+
+
+    @*@Html.DisplayFor(model=>((PMaster.Models.Student)model.Student).FirstName)*@
+
+    <div class="form-horizontal">
+        <h4>Student</h4>
+        <hr />
+        @*@Html.LabelFor(model=>model.Assignment, htmlAttributes: new { @class = "control-label col-md-2"})
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => ViewBag, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Model.Assignment = @ViewBag.Ass;
+            <div class="col-md-10">
+                @Html.DisplayFor(model =>model.Assignment @*, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
+            @*</div>
+        </div>*@
+
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.CourseFilePath, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CourseFilePath, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CourseFilePath, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

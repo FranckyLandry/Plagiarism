@@ -1,0 +1,40 @@
+﻿@model PMaster.Models.Student
+@{
+    ViewBag.Title = "viewPlagiaDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>viewPlagiaDetails</h2>
+
+<div class="container">
+   
+    @foreach (string item in ViewBag.Plagiadet)
+    {
+
+
+        @*@Html.TextArea(item, item, new { @class = "form-control" })*@
+        @*@Html.TextArea(" ", item, new { cols = 10, rows = 100})*@
+        @*<textarea class="span12" placeholder=@item></textarea>*@
+
+
+
+
+
+
+                  <div class="form-group">
+ 
+                    @*<textarea class="form-control" rows="50">@item</textarea>*@
+                      <textarea class="form-control" id="disabledInput" type="text" rows="50" disabled> @item</textarea>
+ 
+                  </div>
+
+         
+              
+                @*<textarea name="description" tabindex="4" rows="40" cols="200">@item</textarea><br>*@
+            
+        
+    }
+
+
+
+</div>

@@ -1,0 +1,75 @@
+﻿@model PMaster.Models.Assignment
+
+@{
+    ViewBag.Title = "GetStudentList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<button type="button" class="btn btn-info btn-round links"><span class="fa fa-plus-circle">@Html.ActionLink("Add student Project", "Create", "Students"@*, new { courseName_parameter = Model.CourseName }, null*@)</span></button>
+
+
+<h2><strong style="color:cornflowerblue"> @Model.AssignmentName</strong> </h2>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+         
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+
+                </li>
+
+              
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <p class="text-muted font-13 m-b-30">
+            </p>
+            <table class="table table-striped" >
+                <thead>
+                    <tr>
+                        <th>PCN</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Status</th>
+                        <th>Start date</th>
+                        <th>*</th>
+                        <th>*</th>
+                        <th>*</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.Student_Assignment)
+                    {
+
+
+                        <tr>
+                            <td>@item.StudentID</td>
+                            <td>@item.Student.FirstName</td>
+                            <td>@item.Student.LastName</td>
+                            <td class="project_progress">
+                                <div class="progress progress_sm">
+                                    <div class="progress-bar bg-blue" role="progressbar" data-transitiongoal="100"></div>
+                                </div>
+                                <small>100% unique</small>
+
+                            </td>
+                            <td>2011/04/25</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.AssignmentName }) |
+    @Html.ActionLink("Back to List", "Index")*@
+</p>

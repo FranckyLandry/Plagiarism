@@ -1,0 +1,72 @@
+File C:\Users\Systeembeheer\Desktop\WebMaster\PMasterWorkingOnBeta\PMaster\Uploads\CRYPTO\Crypto3\777777777\hello.cs: 277 tokens, 81 lines, 3 non-ASCII characters
+Total: 905 tokens
+C:\Users\Systeembeheer\Desktop\WebMaster\PMasterWorkingOnBeta\PMaster\Uploads\CRYPTO\Crypto3\777777777\hello.cs: line 19-80|C:\Users\Systeembeheer\Desktop\WebMaster\PMasterWorkingOnBeta\PMaster\Uploads\CRYPTO\Crypto3\777777777\Student.cs: line 81-142[213]
+ {                                     | {
+ }                                     | }
+ // GET: Courses/Details/5             | // GET: Student/Details/5
+ {                                     | {
+ {                                     | {
+ }                                     | }
+ if (course == null)                   | if (course == null)
+  return HttpNotFound();               |  return HttpNotFound();
+ return View(course);                  | return View(course);
+                                       |
+ public ActionResult Create()          | public ActionResult Create()
+ return View();                        | return View();
+                                       |
+ // To protect from overposting attack | // To protect from overposting attack
+ [HttpPost]                            | [HttpPost]
+ public ActionResult Create([Bind(Incl | public ActionResult Create([Bind(Incl
+ if (ModelState.IsValid)               | if (ModelState.IsValid)
+  db.Course.Add(course);               |  db.Course.Add(course);
+  return RedirectToAction("Index");    |  return RedirectToAction("Index");
+                                       |
+ }                                     | }
+                                       |
+ [ValidateAntiForgeryToken]            | [ValidateAntiForgeryToken]
+ {                                     | {
+                                       |
+                                       |
+ {                                     | {
+                                       |  
+ }                                     | }
+ return RedirectToAction("Index");     | return RedirectToAction("Index");
+}                                      |}
+C:\Users\Systeembeheer\Desktop\WebMaster\PMasterWorkingOnBeta\PMaster\Uploads\CRYPTO\Crypto3\777777777\Student.cs: line 44-60|C:\Users\Systeembeheer\Desktop\WebMaster\PMasterWorkingOnBeta\PMaster\Uploads\CRYPTO\Crypto3\777777777\Student.cs: line 83-99[58]
+ }                                     | }
+ // GET: Student/Delete/5              | // GET: Student/Details/5
+ {                                     | {
+ {                                     | {
+ }                                     | }
+ if (course == null)                   | if (course == null)
+  return HttpNotFound();               |  return HttpNotFound();
+ return View(course);                  | return View(course);
+
+ public ActionResult Edit(int? id)     | public ActionResult Delete(int? id)
+ if (id == null)                       | if (id == null)
+  return new HttpStatusCodeResult(Http |  return new HttpStatusCodeResult(Http
+ Course course = db.Course.Find(id);   | Course course = db.Course.Find(id);
+ {                                     | {
+ }                                     | }
+ }                                     | }
+ // POST: Student/Edit/5               | // POST: Student/Delete/5
+ // more details see https://go.micros |
+
+´╗┐using System;                       |using System;
+using System.Data;                     |using System.Data;
+using System.Linq;                     |using System.Linq;
+using System.Web;                      |using System.Web;
+using PMaster.Models;                  |using PMaster.Models;
+                                       |
+{                                      |{
+
+´╗┐using System;                       |using System.Data;
+using System.Diagnostics;              |using System.Linq;
+using System.Text;                     |using System.Web;
+using System.Threading;                |using PMaster.Models;
+
+ [HttpPost]                            | [HttpPost]
+ public ActionResult Edit([Bind(Includ | public ActionResult Create([Bind(Incl
+ if (ModelState.IsValid)               | if (ModelState.IsValid)
+  db.Entry(course).State = EntityState |  db.Course.Add(course);
+

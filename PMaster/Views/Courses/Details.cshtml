@@ -1,0 +1,330 @@
+﻿@model PMaster.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="title_left">
+
+
+</div>
+
+
+@* <a class="btn icon-btn btn-success" href="#">
+
+    <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+    Add
+    </a> *@
+@*<%=Html.ActionLink("Details", "Details",
+    "Product", new {id = item.ID}, null) %>*@
+
+<h2><strong> @Html.DisplayFor(Model => Model.CourseName)</strong></h2>
+
+
+<div class="x_title">
+
+    <ul class="nav navbar-right panel_toolbox">
+        <li>
+
+            @*<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>*@
+        </li>
+        <li class="dropdown">
+            @*<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>*@
+            <ul class="dropdown-menu" role="menu">
+                @*<li>
+                        <a href="#">Settings 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Settings 2</a>
+                    </li>*@
+            </ul>
+        </li>
+        <li>
+            @*<a class="close-link"><i class="fa fa-close"></i></a>*@
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+
+@*<p><strong>LIST OF ALL THE PROJECTS</strong> </p>*@
+
+
+<!-- start project list -->
+<table class="table" @*class="table table-striped projects"*@>
+    <thead>
+        <tr>
+            <th style="width: 1%">#</th>
+            <th style="width: 20%">Project Name</th>
+
+            @*<th>Number of students</th>*@
+            <th style="width: 20%">Team Members</th>
+            @*<th style="width: 20%">plagia Detected</th>*@
+            <th>#Status</th>
+            @*<th style="width: 20%">#Edit</th>*@
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var ass in Model.Assignment)
+        {
+            //<td>@Html.DisplayFor(model => student.StudentID)</td>
+
+            <tr>
+
+                <td>#</td>
+                <td>
+                    <a>@Html.DisplayFor(model => ass.AssignmentName)</a>
+                    <br />
+                    @*<small>@Html.DisplayFor(model=>Model.SubmitionDate)</small>*@
+                </td>
+
+                <td>
+                    @foreach (var stu in ass.Student_Assignment)
+                {
+                        @*<ul class="list-inline">*@
+                        @*<ul class="list-inline">*@
+                        @*<li>*@
+
+                        <img src="~/Content/images/user.png" class="avatar" alt="Avatar">
+                        @*@Html.DisplayFor(model => stu.FirstName)*@
+                        @*</li>*@
+
+                        @*</ul>*@
+
+                    }
+                </td>
+
+
+
+
+                <td>
+
+
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-link dropdown-toggle" type="button" data-toggle="dropdown">
+                            View Details
+                            <span class="fa fa-eye"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <table class="table table-striped">
+
+                                <thead>
+                                    <tr>
+                                        <th>PCN</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Status</th>
+                                        <th>Start date</th>
+                                        <th>*</th>
+                                        <th>*</th>
+                                        <th>*</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var stu in ass.Student_Assignment)
+                                    {
+                                        if (ass.Student_Assignment.Count() != 0)
+                                        {
+                                            <tr>
+                                                <td>@stu.StudentID</td>
+                                                <td>@stu.Student.FirstName</td>
+                                                <td>@stu.Student.LastName</td>
+                                                <td class="project_progress">
+                                                    @if (stu.Student.PlagiaResultPercent >= 20) { 
+                                                    <div class="progress progress_sm">
+                                                        <div class="progress-bar bg-red" role="progressbar" data-transitiongoal="@stu.Student.PlagiaResultPercent"></div>
+                                                    </div>
+                                                    <small>@stu.Student.PlagiaResultPercent % of Plagiarism</small>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="progress progress_sm">
+                                                            <div class="progress-bar bg-blue" role="progressbar" data-transitiongoal="@stu.Student.PlagiaResultPercent"></div>
+                                                        </div>
+                                                        <small>@stu.Student.PlagiaResultPercent % of Plagiarism</small>
+                                                    }
+                                                </td>
+                                                <td>@DateTime.Now</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        }
+
+                                    }
+                                </tbody>
+
+
+                            </table>
+
+                        </ul>
+                    </div>
+                </td>
+
+
+                <td>
+
+
+                 
+                </td>
+                <td>
+
+
+
+                    @*<button type="button" class="btn btn-info btn-link"><i class="fa fa-folder-open-o"></i>@Html.ActionLink(" Add new Project ", "AddStudent", "Assignments", new { courseName_parameter = ass.AssignmentName }, null)</button>*@
+                    <button type="button" class="btn btn-info btn-link"><i class="fa fa-folder-open-o"></i>@Html.ActionLink(" Add new Project ", "Create", "Students", new { assName_parmaters = ass.AssignmentName }, null)</button>
+
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<!-- end project list -->
+@* ((Student)course.Student) *@
+
+@*@foreach (var item in Model.Student)
+    {
+
+
+
+    <h2>Details</h2>
+    <div>
+        <h4>Student</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => item.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.FirstName)
+            </dd>
+
+        </dl>
+    </div>
+
+    }*@
+@*<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <button type="submit" class="btn btn-round btn-success"><i class="fa fa-plus-circle"></i> @Html.ActionLink("Add Student Project", "Create", "Students" @*, htmlAttributes: new { @class= "glyphicon btn-glyphicon glyphicon-plus " })</button>
+            @*<h2>KeyTable example <small>Users</small></h2>*@
+@*<ul class="nav navbar-right panel_toolbox">
+        <li>
+            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+            <ul class="dropdown-menu" role="menu">
+                <li>
+                    <a href="#">Settings 1</a>
+                </li>
+                <li>
+                    <a href="#">Settings 2</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="close-link"><i class="fa fa-close"></i></a>
+        </li>
+    </ul>*@
+@*<div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <div class="row">
+            <div class="col-sm-11">
+                <div class="card-box table-responsive">
+                    <p class="text-muted font-13 m-b-30">
+
+                    </p>
+                    <table id="datatable-keytable" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>*</th>
+                                <th>Pcn Number</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Submition Date</th>
+                                <th>Checked plagiarism Status</th>
+                                <th>Project Name</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var student in Model.Student)
+                            {
+
+
+                            <tr>
+                                <td><p class="fa fa-user"></p></td>
+                                <td>@Html.DisplayFor(model => student.StudentID)</td>
+                                <td>@Html.DisplayFor(model => student.FirstName)</td>
+                                <td>@Html.DisplayFor(model => student.LastName)</td>
+                                <td>@Html.DisplayFor(model => model.SubmitionDate)</td>
+                                <td class="project_progress">
+                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="47" aria-valuenow="46" style="width: 47%;"></div>
+                                        <small>47% Complete</small>
+                                </td>
+                                <td>@Html.DisplayFor(model => model.CourseFilePath)</td>
+
+                                @*<td>@Html.DisplayFor(model => model.)</td>*@
+@*</tr>
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+
+
+
+
+@*<div>
+        <h4>Course</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseFilePath)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseFilePath)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SubmitionDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SubmitionDate)
+            </dd>
+
+        </dl>
+    </div>*@
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CourseName }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+
+
